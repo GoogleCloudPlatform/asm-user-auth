@@ -1,0 +1,36 @@
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: require-rc-token
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      istio: ingressgateway
+  jwtRules:
+  - issuer: "authservice.asm-user-auth.svc.cluster.local"
+    audiences:
+    - "test_audience"
+    jwksUri: "http://authservice.asm-user-auth.svc.cluster.local:10004/_gcp_user_auth/jwks"
+    fromHeaders:
+    - name: X-ASM-RCTOKEN
+    forwardOriginalToken: true
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: require-rc-token
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      istio: ingressgateway
+  action: ALLOW
+  rules:
+  - when:
+    - key: request.auth.claims[iss]
+      values:
+      - authservice.asm-user-auth.svc.cluster.local
+    - key: request.auth.claims[aud]
+      values:
+      - test_audience

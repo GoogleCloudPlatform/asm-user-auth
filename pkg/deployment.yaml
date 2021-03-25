@@ -35,18 +35,35 @@ spec:
     spec:
       containers:
       - name: authservice
-        image: gcr.io/onprem-idp-release/asm_user_auth:dev  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.image"}
+        image: gcr.io/gke-release/asm/asm_user_auth:latest # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.image"}
         imagePullPolicy: IfNotPresent
+        command:
+        - /usr/bin/asm_user_auth
+        - --uid=
+        - --gid=
+        - --logtostderr
+        - --config=/etc/config/config.yaml
         ports:
         - containerPort: 10003
+          protocol: TCP
         - containerPort: 10004
+          protocol: TCP
+        resources: {}
         volumeMounts:
-        - name: key-volume
-          mountPath: /etc/charon/certs
+        - mountPath: /etc/charon/certs
+          name: key-volume
+        - mountPath: /etc/config
+          name: config-volume
+          readOnly: true
       volumes:
       - name: key-volume
         secret:
+          defaultMode: 420
           secretName: secret-key
+      - configMap:
+          defaultMode: 420
+          name: user-auth-config
+        name: config-volume
 ---
 apiVersion: security.istio.io/v1beta1
 kind: PeerAuthentication
@@ -61,4 +78,4 @@ spec:
     mode: STRICT
   portLevelMtls:
     10004:
-      mode: DISABLE
+      mode: PERMISSIVE

@@ -1,0 +1,44 @@
+# The following gateway is serving the OIDC termination requests as well as
+# the application traffic.
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: userauth
+  namespace: asm-user-auth
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - '*'
+    port:
+      name: https
+      number: 443
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: userauth-tls-cert
+---
+# This ensure the OIDC endpiont has at least some route defined.
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: userauth-oidc
+  namespace: asm-user-auth
+spec:
+  gateways:
+  - userauth
+  hosts:
+  - '*'
+  http:
+  - match:
+    - uri:
+        prefix: /status
+    - uri:
+        prefix: /_gcp_anthos_callback
+    name: user-auth-route
+    route:
+    - destination:
+        host: authservice
+        port:
+          number: 10004
