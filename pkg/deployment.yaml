@@ -35,7 +35,7 @@ spec:
     spec:
       containers:
       - name: authservice
-        image: gcr.io/gke-release/asm/asm_user_auth:latest # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.image"}
+        image: gcr.io/gke-release/asm/asm_user_auth:hybrid_identity_charon_20210325_RC00  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.image"}
         imagePullPolicy: IfNotPresent
         command:
         - /usr/bin/asm_user_auth
