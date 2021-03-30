@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-auth-config
+  namespace: asm-user-auth
+data:
+  config.yaml: |
+    config:
+      adapter:
+        envoy:
+          socket_address:
+            addr: "0.0.0.0"
+            port: 10003
+          failure_mode_allow: false
+      input_plugin:
+        session_cookie:
+          aes_symmetric_key:
+            filename: "/etc/charon/certs/session_cookie.key"
+      custom_resource_definition_info:
+        api_group: "security.anthos.io"
+        version: "v1alpha1"
+        namespace: "asm-user-auth"
+        name: "user-auth-config"
+        kind_plural_name: "userauthconfigs"
+        kind_singular_name: "userauthconfig"
+        status_property_name: "userAuthService"

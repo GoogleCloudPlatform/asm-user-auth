@@ -1,0 +1,30 @@
+# This authorization policy shows how to expose specific path "/ip" to public without requiring
+# RC token based authorization.
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: require-rc-token
+  namespace: istio-system
+spec:
+  selector:
+    matchLabels:
+      istio: ingressgateway
+  action: ALLOW
+  rules:
+  - to:
+    - operation:
+        paths: ["/ip"]
+  - to:
+    - operation:
+        notPaths: ["/ip"]
+    when:
+    - key: request.auth.claims[iss]
+      values:
+      - authservice.asm-user-auth.svc.cluster.local
+    - key: request.auth.claims[aud]
+      values:
+      - test_audience
+    - key: request.auth.claims[sub]
+      values:
+      - allowed_user_sub_1  # Change this with the "sub" claim in the RC token.
+      - '*'

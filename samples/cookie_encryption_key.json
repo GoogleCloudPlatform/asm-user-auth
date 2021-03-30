@@ -1,0 +1,10 @@
+{
+   "keys":[
+      {
+         "kty":"oct",
+         "kid":"key-0",
+         "k":"c7WsUB6msAgIdDxTnT13Yw",
+         "useAfter": 1612813735
+      }
+   ]
+}

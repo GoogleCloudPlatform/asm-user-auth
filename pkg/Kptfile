@@ -3,7 +3,7 @@ kind: Kptfile
 metadata:
   name: pkg
 packageMetadata:
-  shortDescription:  Kpt package for anthos service mesh user auth.
+  shortDescription: Kpt package for anthos service mesh user auth.
 openAPI:
   definitions:
     io.k8s.cli.setters.anthos.servicemesh.user-auth.image:
