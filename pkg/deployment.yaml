@@ -15,6 +15,9 @@ spec:
   - name: http
     port: 10004
     targetPort: 10004
+  - name: info
+    port: 9901
+    targetPort: 9901
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -48,9 +51,11 @@ spec:
           protocol: TCP
         - containerPort: 10004
           protocol: TCP
+        - containerPort: 9901
+          protocol: TCP
         resources: {}
         volumeMounts:
-        - mountPath: /etc/charon/certs
+        - mountPath: /etc/ais/certs
           name: key-volume
         - mountPath: /etc/config
           name: config-volume

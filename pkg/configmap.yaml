@@ -6,6 +6,10 @@ metadata:
 data:
   config.yaml: |
     config:
+      info_service:
+        socket_address:
+          addr: "0.0.0.0"
+          port: 9901
       adapter:
         envoy:
           socket_address:
@@ -15,7 +19,7 @@ data:
       input_plugin:
         session_cookie:
           aes_symmetric_key:
-            filename: "/etc/charon/certs/session_cookie.key"
+            filename: "/etc/ais/certs/session_cookie.key"
       custom_resource_definition_info:
         api_group: "security.anthos.io"
         version: "v1alpha1"
