@@ -16,6 +16,7 @@ data:
             addr: "0.0.0.0"
             port: 10003
           failure_mode_allow: false
+          enable_plaintext_mode: true
       input_plugin:
         session_cookie:
           aes_symmetric_key:
@@ -28,3 +29,5 @@ data:
         kind_plural_name: "userauthconfigs"
         kind_singular_name: "userauthconfig"
         status_property_name: "userAuthService"
+      webflow:
+        enabled: true
