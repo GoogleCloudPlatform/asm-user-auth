@@ -31,3 +31,17 @@ openAPI:
           name: anthos.servicemesh.user-auth.oidc.issuerURI
           value: your-oidc-issuer-uri
           isSet: true
+    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIHost:
+      description: The redirect URI host name for OIDC.
+      x-k8s-cli:
+        setter:
+          name: anthos.servicemesh.user-auth.oidc.redirectURIHost
+          value: your-oidc-redirect-uri-host
+          isSet: true
+    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIPath:
+      description: The redirect URI path for OIDC.
+      x-k8s-cli:
+        setter:
+          name: anthos.servicemesh.user-auth.oidc.redirectURIPath
+          value: your-oidc-redirect-uri-path
+          isSet: true
