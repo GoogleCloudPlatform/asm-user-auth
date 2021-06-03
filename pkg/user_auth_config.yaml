@@ -10,6 +10,6 @@ spec:
       clientID: "<your client id>"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.clientID"}
       clientSecret: "<your client secret>"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.clientSecret"}
       issuerURI: "<your issuer uri>"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.issuerURI"}
-      redirectURIHost: "https://localhost:8443"
-      redirectURIPath: "/_gcp_anthos_callback"
+      redirectURIHost: ""  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIHost"}
+      redirectURIPath: "/_gcp_asm/authenticate"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIPath"}
   outputJWTAudience: "test_audience"
