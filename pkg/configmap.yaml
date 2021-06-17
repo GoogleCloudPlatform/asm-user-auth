@@ -23,7 +23,7 @@ data:
             filename: "/etc/ais/certs/session_cookie.key"
       custom_resource_definition_info:
         api_group: "security.anthos.io"
-        version: "v1alpha1"
+        version: "v1beta1"
         namespace: "asm-user-auth"
         name: "user-auth-config"
         kind_plural_name: "userauthconfigs"

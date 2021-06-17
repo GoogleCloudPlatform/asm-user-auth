@@ -11,19 +11,20 @@ openAPI:
         setter:
           name: anthos.servicemesh.user-auth.image
           value: gcr.io/gke-release/asm/asm_user_auth:hybrid_identity_charon_20210325_RC00
-    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.clientID:
-      description: The OAuth2 client ID for OIDC authentication.
+    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.name:
+      description: Name of the Kubernetes secret contains OAuth2 client credential for OIDC authentication.
       x-k8s-cli:
         setter:
-          name: anthos.servicemesh.user-auth.oidc.clientID
-          value: your-oidc-client-id
+          name: anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.name
+          value: your-kubernetes-secret-name
           isSet: true
-    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.clientSecret:
-      description: The OAuth2 client secret for OIDC authentication.
+    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.namespace:
+      description: Namespace of the Kubernetes secret contains OAuth2 client credential for OIDC authentication.
       x-k8s-cli:
         setter:
-          name: anthos.servicemesh.user-auth.oidc.clientSecret
-          value: your-oidc-clientSecret
+          name: anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.namespace
+          value: your-kubernetes-secret-namespace
+          isSet: true
     io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.issuerURI:
       description: The OIDC identity provider issuer URI.
       x-k8s-cli:
