@@ -8,8 +8,8 @@ spec:
     oidc:
       certificateAuthorityData: ""
       oauthCredentialsSecret:
-        name: "<your kubernetes secret name>"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.name"}
-        namespace: "<your kubernetes secret namespace>"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.namespace"}
+        name: "oauth-secret"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.name"}
+        namespace: "asm-user-auth"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.namespace"}
       issuerURI: "<your issuer uri>"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.issuerURI"}
       redirectURIHost: ""  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIHost"}
       redirectURIPath: "/_gcp_asm/authenticate"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIPath"}
