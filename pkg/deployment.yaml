@@ -53,7 +53,13 @@ spec:
           protocol: TCP
         - containerPort: 9901
           protocol: TCP
-        resources: {}
+        resources:
+          limits:
+            cpu: 2.0
+            memory: 512M
+          requests:
+            cpu: 1.0
+            memory: 256M
         volumeMounts:
         - mountPath: /etc/ais/certs
           name: key-volume
