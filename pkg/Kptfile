@@ -57,5 +57,5 @@ openAPI:
       x-k8s-cli:
         setter:
           name: anthos.servicemesh.user-auth.oidc.redirectURIPath
-          value: your-oidc-redirect-uri-path
+          value: "/_gcp_asm/authenticate"
           isSet: true
