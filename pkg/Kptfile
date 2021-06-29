@@ -24,10 +24,38 @@ openAPI:
         setter:
           name: anthos.servicemesh.user-auth.oidc.clientSecret
           value: your-oidc-clientSecret
+    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.name:
+      description: Name of the Kubernetes secret contains OAuth2 client credential for OIDC authentication.
+      x-k8s-cli:
+        setter:
+          name: anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.name
+          value: oauth-secret
+          isSet: true
+    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.namespace:
+      description: Namespace of the Kubernetes secret contains OAuth2 client credential for OIDC authentication.
+      x-k8s-cli:
+        setter:
+          name: anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.namespace
+          value: asm-user-auth
+          isSet: true
     io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.issuerURI:
       description: The OIDC identity provider issuer URI.
       x-k8s-cli:
         setter:
           name: anthos.servicemesh.user-auth.oidc.issuerURI
           value: your-oidc-issuer-uri
+          isSet: true
+    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIHost:
+      description: The redirect URI host name for OIDC.
+      x-k8s-cli:
+        setter:
+          name: anthos.servicemesh.user-auth.oidc.redirectURIHost
+          value: your-oidc-redirect-uri-host
+          isSet: true
+    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIPath:
+      description: The redirect URI path for OIDC.
+      x-k8s-cli:
+        setter:
+          name: anthos.servicemesh.user-auth.oidc.redirectURIPath
+          value: "/_gcp_asm/authenticate"
           isSet: true

@@ -1,4 +1,4 @@
-apiVersion: security.anthos.io/v1alpha1
+apiVersion: security.anthos.io/v1beta1
 kind: UserAuthConfig
 metadata:
   name: user-auth-config
@@ -7,9 +7,10 @@ spec:
   authentication:
     oidc:
       certificateAuthorityData: ""
-      clientID: "<your client id>"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.clientID"}
-      clientSecret: "<your client secret>"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.clientSecret"}
+      oauthCredentialsSecret:
+        name: "oauth-secret"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.name"}
+        namespace: "asm-user-auth"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.namespace"}
       issuerURI: "<your issuer uri>"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.issuerURI"}
-      redirectURIHost: "https://localhost:8443"
-      redirectURIPath: "/_gcp_anthos_callback"
+      redirectURIHost: ""  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIHost"}
+      redirectURIPath: "/_gcp_asm/authenticate"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIPath"}
   outputJWTAudience: "test_audience"

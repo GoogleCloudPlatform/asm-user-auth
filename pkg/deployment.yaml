@@ -15,6 +15,9 @@ spec:
   - name: http
     port: 10004
     targetPort: 10004
+  - name: info
+    port: 9901
+    targetPort: 9901
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -35,10 +38,10 @@ spec:
     spec:
       containers:
       - name: authservice
-        image: gcr.io/gke-release/asm/asm_user_auth:hybrid_identity_charon_20210325_RC00  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.image"}
+        image: gcr.io/gke-release/ais:GA  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.image"}
         imagePullPolicy: IfNotPresent
         command:
-        - /usr/bin/asm_user_auth
+        - /usr/bin/ais
         - --uid=
         - --gid=
         - --logtostderr
@@ -48,9 +51,17 @@ spec:
           protocol: TCP
         - containerPort: 10004
           protocol: TCP
-        resources: {}
+        - containerPort: 9901
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 2.0
+            memory: 512M
+          requests:
+            cpu: 1.0
+            memory: 256M
         volumeMounts:
-        - mountPath: /etc/charon/certs
+        - mountPath: /etc/ais/certs
           name: key-volume
         - mountPath: /etc/config
           name: config-volume

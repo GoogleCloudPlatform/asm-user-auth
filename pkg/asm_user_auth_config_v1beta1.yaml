@@ -15,7 +15,7 @@ spec:
     singular: userauthconfig
   scope: Namespaced
   versions:
-  - name: v1alpha1
+  - name: v1beta1
     schema:
       openAPIV3Schema:
         description: UserAuthConfig is the schema for the userauthproxyconfigs API.
@@ -45,14 +45,20 @@ spec:
                         description: CertificateAuthorityData contains PEM-encoded
                           certificate authority certificate for OIDC provider.
                         type: string
-                      # TODO(piyushn): Move clientid / secret to k8s secrets.
-                      clientID:
-                        description: ClientID is an ID for OIDC client application.
-                        type: string
-                      clientSecret:
-                        description: ClientSecret is the shared secret between OIDC
-                          client application and OIDC provider.
-                        type: string
+                      oauthCredentialsSecret:
+                        description: secret references to the Kubernetes Opaque type secret which
+                          contains OAuth2 OIDC client_id and client_secret in JSON payload.
+                        properties:
+                          name:
+                            description: Name of the secret which stores OAuth2 OIDC credentials.
+                            type: string
+                          namespace:
+                            description: Namespace of the secret which stores OAuth2 OIDC credentials.
+                            type: string
+                        required:
+                        - name
+                        - namespace
+                        type: object
                       scopes:
                         description: Comma-separated list of identifiers used to specify what access privileges are being requested in addition to "openid" scope, eg. "groups,allatclaim".
                         type: string
@@ -81,8 +87,7 @@ spec:
                         type: string
                         default: "/_gcp_asm/authenticate"
                     required:
-                    - clientID
-                    - clientSecret
+                    - oauthCredentialsSecret
                     - issuerURI
                     - redirectURIHost
                     - redirectURIPath
