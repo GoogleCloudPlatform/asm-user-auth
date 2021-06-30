@@ -10,7 +10,7 @@ openAPI:
       x-k8s-cli:
         setter:
           name: anthos.servicemesh.user-auth.image
-          value: gcr.io/gke-release/asm/asm_user_auth:hybrid_identity_charon_20210325_RC00
+          value: gcr.io/gke-release/ais:hybrid_identity_charon_20210629_RC00
     io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.clientID:
       description: The OAuth2 client ID for OIDC authentication.
       x-k8s-cli:
