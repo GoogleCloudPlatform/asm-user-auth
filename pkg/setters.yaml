@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: setters
+data:
+  anthos.servicemesh.user-auth.image: gcr.io/gke-release/ais:hybrid_identity_charon_20210629_RC00
+  anthos.servicemesh.user-auth.oidc.clientID: your-oidc-client-id
+  anthos.servicemesh.user-auth.oidc.clientSecret: your-oidc-clientSecret
+  anthos.servicemesh.user-auth.oidc.issuerURI: your-oidc-issuer-uri
+  anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.name: oauth-secret
+  anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.namespace: asm-user-auth
+  anthos.servicemesh.user-auth.oidc.redirectURIHost: your-oidc-redirect-uri-host
+  anthos.servicemesh.user-auth.oidc.redirectURIPath: /_gcp_asm/authenticate
