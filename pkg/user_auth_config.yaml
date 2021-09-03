@@ -8,9 +8,9 @@ spec:
     oidc:
       certificateAuthorityData: ""
       oauthCredentialsSecret:
-        name: "oauth-secret"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.name"}
-        namespace: "asm-user-auth"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.namespace"}
-      issuerURI: "<your issuer uri>"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.issuerURI"}
-      redirectURIHost: ""  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIHost"}
-      redirectURIPath: "/_gcp_asm/authenticate"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIPath"}
+        name: "oauth-secret" # kpt-set: ${anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.name}
+        namespace: "asm-user-auth" # kpt-set: ${anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.namespace}
+      issuerURI: "<your issuer uri>" # kpt-set: ${anthos.servicemesh.user-auth.oidc.issuerURI}
+      redirectURIHost: "" # kpt-set: ${anthos.servicemesh.user-auth.oidc.redirectURIHost}
+      redirectURIPath: "/_gcp_asm/authenticate" # kpt-set: ${anthos.servicemesh.user-auth.oidc.redirectURIPath}
   outputJWTAudience: "test_audience"

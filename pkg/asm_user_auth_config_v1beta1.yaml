@@ -4,8 +4,8 @@ metadata:
   annotations:
     # TODO(piyushn): Find out the right version
     controller-gen.kubebuilder.io/version: v0.2.4
-  creationTimestamp: null
   name: userauthconfigs.security.anthos.io
+  creationTimestamp: null
 spec:
   group: security.anthos.io
   names:
@@ -21,14 +21,10 @@ spec:
         description: UserAuthConfig is the schema for the userauthproxyconfigs API.
         properties:
           apiVersion:
-            description: 'APIVersion defines the versioned schema of this representation
-              of an object. Servers should convert recognized schemas to the latest
-              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            description: 'APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
             type: string
           kind:
-            description: 'Kind is a string value representing the REST resource this
-              object represents. Servers may infer this from the endpoint the client
-              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            description: 'Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
             type: string
           metadata:
             type: object
@@ -42,12 +38,10 @@ spec:
                     description: OIDC specific configuration.
                     properties:
                       certificateAuthorityData:
-                        description: CertificateAuthorityData contains PEM-encoded
-                          certificate authority certificate for OIDC provider.
+                        description: CertificateAuthorityData contains PEM-encoded certificate authority certificate for OIDC provider.
                         type: string
                       oauthCredentialsSecret:
-                        description: secret references to the Kubernetes Opaque type secret which
-                          contains OAuth2 OIDC client_id and client_secret in JSON payload.
+                        description: secret references to the Kubernetes Opaque type secret which contains OAuth2 OIDC client_id and client_secret in JSON payload.
                         properties:
                           name:
                             description: Name of the secret which stores OAuth2 OIDC credentials.
@@ -66,24 +60,13 @@ spec:
                         description: Name of the claim in the OIDC ID Token that holds the user's group information. This claim should contain a comma-separated list of strings, eg. ["group1", "group2"].
                         type: string
                       issuerURI:
-                        description: The issuer in the idtoken issued by OIDC provider.
-                          This will be used to validate the idtoken.
+                        description: The issuer in the idtoken issued by OIDC provider. This will be used to validate the idtoken.
                         type: string
                       redirectURIHost:
-                        description: The host to be used for OAuth termination URI. If not present
-                          the host from the target URL will be used. This value can be utilized
-                          when a user auth sso session is desired at a higher level domain. For example,
-                          to enable sso between profile.example.com/ and admin.example.com/, this
-                          value can be set to example.com. It'll enable user auth session to be
-                          established at example.com that'll be shared amongst all subdomains.
-                          Note that if multiple domains are being served from the same mesh,
-                          example1.com and example2.com, the feature can not be used, and is
-                          recommended to be left empty.
+                        description: The host to be used for OAuth termination URI. If not present the host from the target URL will be used. This value can be utilized when a user auth sso session is desired at a higher level domain. For example, to enable sso between profile.example.com/ and admin.example.com/, this value can be set to example.com. It'll enable user auth session to be established at example.com that'll be shared amongst all subdomains. Note that if multiple domains are being served from the same mesh, example1.com and example2.com, the feature can not be used, and is recommended to be left empty.
                         type: string
                       redirectURIPath:
-                        description: The oauth termination path. It is required for this path to
-                          be served from the same ingress as the application for a successful user auth
-                          session. Note, this path will always terminate at user auth binary.
+                        description: The oauth termination path. It is required for this path to be served from the same ingress as the application for a successful user auth session. Note, this path will always terminate at user auth binary.
                         type: string
                         default: "/_gcp_asm/authenticate"
                     required:
@@ -101,8 +84,7 @@ spec:
             description: UserAuthConfigStatus defines the observed state of auth service.
             properties:
               userAuthService:
-                description: UserAuthService contains a message which records the status
-                  of applying the current configuration set.
+                description: UserAuthService contains a message which records the status of applying the current configuration set.
                 type: string
             type: object
         type: object
