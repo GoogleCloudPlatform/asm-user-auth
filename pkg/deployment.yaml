@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
       - name: authservice
-        image: gcr.io/gke-release/ais:GA  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.image"}
+        image: gcr.io/gke-release/ais:hybrid_identity_charon_20210629_RC00  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.image"}
         imagePullPolicy: IfNotPresent
         command:
         - /usr/bin/ais
