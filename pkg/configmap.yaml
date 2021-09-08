@@ -17,8 +17,6 @@ data:
             port: 10003
           failure_mode_allow: false
           enable_plaintext_mode: true
-      authentication_plugin:
-        enabled: all
       input_plugin:
         session_cookie:
           aes_symmetric_key:

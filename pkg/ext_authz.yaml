@@ -11,6 +11,6 @@ spec:
   provider:
     name: asm-userauth-grpc
   rules:
-    - to:
-        - operation:
-            notPaths: ["/ip"]
+  - to:
+    - operation:
+        notPaths: ["/ip"]
