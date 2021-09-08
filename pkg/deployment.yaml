@@ -9,15 +9,15 @@ spec:
   selector:
     app: authservice
   ports:
-    - name: grpc
-      port: 10003
-      targetPort: 10003
-    - name: http
-      port: 10004
-      targetPort: 10004
-    - name: info
-      port: 9901
-      targetPort: 9901
+  - name: grpc
+    port: 10003
+    targetPort: 10003
+  - name: http
+    port: 10004
+    targetPort: 10004
+  - name: info
+    port: 9901
+    targetPort: 9901
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -37,44 +37,44 @@ spec:
         app: authservice
     spec:
       containers:
-        - name: authservice
-          image: gcr.io/gke-release/ais:GA # kpt-set: ${anthos.servicemesh.user-auth.image}
-          command:
-            - /usr/bin/ais
-            - --uid=
-            - --gid=
-            - --logtostderr
-            - --config=/etc/config/config.yaml
-          ports:
-            - protocol: TCP
-              containerPort: 10003
-            - protocol: TCP
-              containerPort: 10004
-            - protocol: TCP
-              containerPort: 9901
-          resources:
-            limits:
-              cpu: "2.0"
-              memory: 512M
-            requests:
-              cpu: "1.0"
-              memory: 256M
-          volumeMounts:
-            - name: key-volume
-              mountPath: /etc/ais/certs
-            - name: config-volume
-              readOnly: true
-              mountPath: /etc/config
-          imagePullPolicy: IfNotPresent
-      volumes:
+      - name: authservice
+        image: gcr.io/gke-release/ais:hybrid_identity_charon_20210629_RC00  # kpt-set: ${image}
+        command:
+        - /usr/bin/ais
+        - --uid=
+        - --gid=
+        - --logtostderr
+        - --config=/etc/config/config.yaml
+        ports:
+        - protocol: TCP
+          containerPort: 10003
+        - protocol: TCP
+          containerPort: 10004
+        - protocol: TCP
+          containerPort: 9901
+        resources:
+          limits:
+            cpu: "2.0"
+            memory: 512M
+          requests:
+            cpu: "1.0"
+            memory: 256M
+        volumeMounts:
         - name: key-volume
-          secret:
-            defaultMode: 420
-            secretName: secret-key
+          mountPath: /etc/ais/certs
         - name: config-volume
-          configMap:
-            name: user-auth-config
-            defaultMode: 420
+          readOnly: true
+          mountPath: /etc/config
+        imagePullPolicy: IfNotPresent
+      volumes:
+      - name: key-volume
+        secret:
+          defaultMode: 420
+          secretName: secret-key
+      - name: config-volume
+        configMap:
+          name: user-auth-config
+          defaultMode: 420
 ---
 apiVersion: security.istio.io/v1beta1
 kind: PeerAuthentication

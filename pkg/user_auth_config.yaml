@@ -7,10 +7,10 @@ spec:
   authentication:
     oidc:
       certificateAuthorityData: ""
-      issuerURI: "<your issuer uri>" # kpt-set: ${anthos.servicemesh.user-auth.oidc.issuerURI}
+      issuerURI: "<your issuer uri>"  # kpt-set: ${issuer-uri}
       oauthCredentialsSecret:
-        name: "oauth-secret" # kpt-set: ${anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.name}
-        namespace: "asm-user-auth" # kpt-set: ${anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.namespace}
-      redirectURIHost: "" # kpt-set: ${anthos.servicemesh.user-auth.oidc.redirectURIHost}
-      redirectURIPath: "/_gcp_asm/authenticate" # kpt-set: ${anthos.servicemesh.user-auth.oidc.redirectURIPath}
-  outputJWTAudience: "test_audience"
+        name: "oauth-secret"  # kpt-set: ${secret-name}
+        namespace: "asm-user-auth"  # kpt-set: ${secret-namespace}
+      redirectURIHost: ""  # kpt-set: ${redirect-host}
+      redirectURIPath: "/_gcp_asm/authenticate"  # kpt-set: ${redirect-path}
+  outputJWTAudience: "test_audience"  # kpt-set: ${jwt-audience}

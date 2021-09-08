@@ -9,15 +9,15 @@ spec:
   selector:
     istio: ingressgateway
   servers:
-    - port:
-        name: https
-        protocol: HTTPS
-        number: 443
-      hosts:
-        - '*'
-      tls:
-        credentialName: userauth-tls-cert
-        mode: SIMPLE
+  - port:
+      name: https
+      protocol: HTTPS
+      number: 443
+    hosts:
+    - '*'
+    tls:
+      credentialName: userauth-tls-cert
+      mode: SIMPLE
 ---
 # This ensure the OIDC endpiont has at least some route defined.
 apiVersion: networking.istio.io/v1beta1
@@ -27,18 +27,18 @@ metadata:
   namespace: asm-user-auth
 spec:
   gateways:
-    - userauth
+  - userauth
   hosts:
-    - '*'
+  - '*'
   http:
-    - name: user-auth-route
-      match:
-        - uri:
-            prefix: /status
-        - uri:
-            prefix: "/_gcp_asm/authenticate" # kpt-set: ${anthos.servicemesh.user-auth.oidc.redirectURIPath}
-      route:
-        - destination:
-            port:
-              number: 10004
-            host: authservice
+  - name: user-auth-route
+    match:
+    - uri:
+        prefix: /status
+    - uri:
+        prefix: "/_gcp_asm/authenticate"  # kpt-set: ${redirect-path}
+    route:
+    - destination:
+        port:
+          number: 10004
+        host: authservice
