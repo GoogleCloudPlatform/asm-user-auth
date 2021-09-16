@@ -65,6 +65,8 @@ spec:
         - name: config-volume
           readOnly: true
           mountPath: /etc/config
+        - name: tmp
+          mountPath: /tmp
         imagePullPolicy: IfNotPresent
       volumes:
       - name: key-volume
@@ -75,6 +77,8 @@ spec:
         configMap:
           name: user-auth-config
           defaultMode: 420
+      - name: tmp
+        emptyDir: {}
 ---
 apiVersion: security.istio.io/v1beta1
 kind: PeerAuthentication

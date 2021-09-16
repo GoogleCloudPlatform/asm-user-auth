@@ -18,9 +18,17 @@ Kpt v1.0 package for ASM User Auth.
     `"asm-user-auth"`.
 -   `redirect-host`: Redirect URI hostname for OAuth2 OIDC. Default: `""`.
 -   `redirect-path`: Redirect URI path for OAuth2 OIDC. Default:
-    `"/_gcp_asm/authenticate"`.
+    `"/_gcp_asm_authenticate"`.
 -   `jwt-audience`: Output JWT Audience field name from UserAuth. Default:
     `"test_audience"`.
+-   `ca-cert`: Base64 encoded ODIC IDP root CA certificate in pem format. If it
+    is `""`, User Auth will use the system default root CA certs. Default: `""`.
+-   `scopes`: Comma-separated list of identifiers used to specify what access
+    privileges are being requested in addition to "openid" scope, e.g.
+    "groups,allatclaim". Default: `""`.
+-   `groupsClaim`: Name of the claim in the OIDC ID Token that holds the user's
+    group information. Default: `""`.
+-   `hosts`: Array of hosts that whitelisted by UserAuth. Default: `"*"`.
 
 ## Instruction
 

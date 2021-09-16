@@ -6,11 +6,13 @@ metadata:
 spec:
   authentication:
     oidc:
-      certificateAuthorityData: ""
+      certificateAuthorityData: ""  # kpt-set: ${ca-cert}
       issuerURI: "<your issuer uri>"  # kpt-set: ${issuer-uri}
       oauthCredentialsSecret:
         name: "oauth-secret"  # kpt-set: ${secret-name}
         namespace: "asm-user-auth"  # kpt-set: ${secret-namespace}
       redirectURIHost: ""  # kpt-set: ${redirect-host}
-      redirectURIPath: "/_gcp_asm/authenticate"  # kpt-set: ${redirect-path}
+      redirectURIPath: "/_gcp_asm_authenticate"  # kpt-set: ${redirect-path}
+      scopes: ""  # kpt-set: ${scopes}
+      groupsClaim: ""  # kpt-set: ${groups}
   outputJWTAudience: "test_audience"  # kpt-set: ${jwt-audience}
