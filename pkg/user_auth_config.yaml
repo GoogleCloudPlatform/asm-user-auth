@@ -8,6 +8,7 @@ spec:
     oidc:
       certificateAuthorityData: ""  # kpt-set: ${ca-cert}
       issuerURI: "<your issuer uri>"  # kpt-set: ${issuer-uri}
+      proxy: ""  # kpt-set: ${proxy}
       oauthCredentialsSecret:
         name: "oauth-secret"  # kpt-set: ${secret-name}
         namespace: "asm-user-auth"  # kpt-set: ${secret-namespace}

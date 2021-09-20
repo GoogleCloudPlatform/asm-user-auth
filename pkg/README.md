@@ -29,6 +29,8 @@ Kpt v1.0 package for ASM User Auth.
 -   `groupsClaim`: Name of the claim in the OIDC ID Token that holds the user's
     group information. Default: `""`.
 -   `hosts`: Array of hosts that whitelisted by UserAuth. Default: `"*"`.
+-   `proxy`: Optional HTTP proxy to IDP with format
+    `http://user:password@1.2.3.4:8888`. Default: `""`.
 
 ## Instruction
 
