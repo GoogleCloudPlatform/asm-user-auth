@@ -30,26 +30,39 @@ Kpt v1.0 package for ASM User Auth.
 -   `groupsClaim`: Name of the claim in the OIDC ID Token that holds the user's
     group information. If it is `""`, no groups will be considered. Default: `""`.
 -   `hosts`: Array of hosts that are allowed by UserAuth. Default: `- '*'`,
-    which will allow any host.
+    which will allow any host. This setter can only be set by kpt functionConfig
+    file.
 -   `proxy`: Optional HTTP proxy to IDP with format
     `http://user:password@1.2.3.4:8888`. Default: `""`.
 
 ## Instruction
 
-1.  Use `kpt fn eval --image gcr.io/kpt-fn/apply-setters:v0.2 --` followed by
-    `setter=value` to set the custom values.
+1.  Set the value using setters, there are two ways to set values:
+
+    1.  (Recommended) Create and maintain kpt functionConfig file in source
+        control, user can setup different setters files and use them as needed.
+        [Example](../samples/kpt-setters.yaml) can be found as reference.
+
+        Apply the functionConfig file:
+
+        ```shell
+        kpt fn eval pkg --image gcr.io/kpt-fn/apply-setters:v0.2 --fn-config ./samples/kpt-setters.yaml
+        ```
+
+    2.  Use `kpt fn eval pkg --image gcr.io/kpt-fn/apply-setters:v0.2 --`
+        followed by `setter=value` to set the custom values.
+
+        Example:
+
+        ```shell
+        kpt fn eval pkg --image gcr.io/kpt-fn/apply-setters:v0.2 -- \
+        client-id="ZmFrZS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbQ==" \
+        client-secret="ZmFrZXNlY3JldA==" \
+        issuer-uri="https://issuer.dummy.com"
+        ```
 
     **IMPORTANT** Setters with no default values must be set before apply, e.g.
     `issuer-uri`, `client-id`, `client-secret`.
-
-    Example:
-
-    ```shell
-    kpt fn eval pkg --image gcr.io/kpt-fn/apply-setters:v0.2 -- \
-    client-id="ZmFrZS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbQ==" \
-    client-secret="ZmFrZXNlY3JldA==" \
-    issuer-uri="https://issuer.dummy.com"
-    ```
 
 2.  Apply CRD then the rest of the pkg.
 
