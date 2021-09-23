@@ -4,7 +4,6 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 metadata:
   name: require-rc-token
-  namespace: istio-system
 spec:
   selector:
     matchLabels:

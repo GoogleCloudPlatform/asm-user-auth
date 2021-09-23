@@ -71,7 +71,7 @@ spec:
                         type: string
                       proxy:
                         description: 'Proxy server to use for the auth method, if applicable.
-                          For example: https://user:password@10.10.10.10:8888.'
+                          For example: http://user:password@10.10.10.10:8888.'
                         type: string
                       redirectURIHost:
                         description: The host to be used for OAuth termination URI. If not present

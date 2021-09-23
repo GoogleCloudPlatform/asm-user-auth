@@ -8,4 +8,4 @@ pipeline:
   mutators:
     - image: gcr.io/kpt-fn/apply-setters:v0.1
       configMap:
-        image: gcr.io/gke-release/ais:hybrid_identity_charon_20210629_RC00
+        image: gcr.io/gke-release/ais:1.1.0

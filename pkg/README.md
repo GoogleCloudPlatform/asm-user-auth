@@ -11,7 +11,7 @@ Kpt v1.0 package for ASM User Auth.
 -   `client-secret`: ClientSecret configured in OAuth2 IDP, must be base64
     encoded.
 -   `image`: The UserAuth image. Default:
-    `gcr.io/gke-release/ais:hybrid_identity_charon_20210629_RC00`.
+    `gcr.io/gke-release/ais:1.1.0`.
 -   `secret-name`: The K8s secret UserAuth reads from. Default:
     `"oauth-secret"`.
 -   `secret-namespace`: The namespace of the secret above. Default:
@@ -21,14 +21,16 @@ Kpt v1.0 package for ASM User Auth.
     `"/_gcp_asm_authenticate"`.
 -   `jwt-audience`: Output JWT Audience field name from UserAuth. Default:
     `"test_audience"`.
--   `ca-cert`: Base64 encoded ODIC IDP root CA certificate in pem format. If it
-    is `""`, User Auth will use the system default root CA certs. Default: `""`.
+-   `ca-cert`: This is a Base64 encoded, PEM formatted certificate
+    authority certificate. If it is `""`, User Auth will use the system default
+    root CA certs. Default: `""`.
 -   `scopes`: Comma-separated list of identifiers used to specify what access
     privileges are being requested in addition to "openid" scope, e.g.
     "groups,allatclaim". Default: `""`.
 -   `groupsClaim`: Name of the claim in the OIDC ID Token that holds the user's
-    group information. Default: `""`.
--   `hosts`: Array of hosts that whitelisted by UserAuth. Default: `"*"`.
+    group information. If it is `""`, no groups will be considered. Default: `""`.
+-   `hosts`: Array of hosts that are allowed by UserAuth. Default: `- '*'`,
+    which will allow any host.
 -   `proxy`: Optional HTTP proxy to IDP with format
     `http://user:password@1.2.3.4:8888`. Default: `""`.
 

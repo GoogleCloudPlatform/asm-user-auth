@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
       - name: authservice
-        image: gcr.io/gke-release/ais:hybrid_identity_charon_20210629_RC00  # kpt-set: ${image}
+        image: gcr.io/gke-release/ais:1.1.0  # kpt-set: ${image}
         command:
         - /usr/bin/ais
         - --uid=

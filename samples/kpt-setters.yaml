@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kpt-setters
+data:
+  issuer-uri: "https://issuer.dummy.com"
+  client-id: "ZmFrZS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbQ=="
+  client-secret: "ZmFrZXNlY3JldA=="
+  image: "gcr.io/gke-release/ais:1.1.0"
+  redirect-host: "www.example.com"
+  redirect-path: "/_gcp_asm_authenticate"
+  ca-cert: ""
+  hosts: |-
+    - "*"
