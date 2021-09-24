@@ -9,6 +9,7 @@ data:
   image: "gcr.io/gke-release/ais:1.1.0"
   redirect-host: "www.example.com"
   redirect-path: "/_gcp_asm_authenticate"
-  ca-cert: ""
+  ca-cert: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tClpIVnRiWGxmWTJWeWRBPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQ=="
   hosts: |-
-    - "*"
+    - "*.foo.com"
+    - "*.bar.com"
