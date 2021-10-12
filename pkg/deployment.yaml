@@ -38,7 +38,8 @@ spec:
     spec:
       containers:
       - name: authservice
-        image: gcr.io/gke-release/ais:hybrid_identity_charon_20210629_RC00  # kpt-set: ${image}
+        image: gcr.io/gke-release/ais:1.0.1  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.image"}
+        imagePullPolicy: IfNotPresent
         command:
         - /usr/bin/ais
         - --uid=
@@ -46,35 +47,38 @@ spec:
         - --logtostderr
         - --config=/etc/config/config.yaml
         ports:
-        - protocol: TCP
-          containerPort: 10003
-        - protocol: TCP
-          containerPort: 10004
-        - protocol: TCP
-          containerPort: 9901
+        - containerPort: 10003
+          protocol: TCP
+        - containerPort: 10004
+          protocol: TCP
+        - containerPort: 9901
+          protocol: TCP
         resources:
           limits:
-            cpu: "2.0"
+            cpu: 2.0
             memory: 512M
           requests:
-            cpu: "1.0"
+            cpu: 1.0
             memory: 256M
         volumeMounts:
-        - name: key-volume
-          mountPath: /etc/ais/certs
-        - name: config-volume
+        - mountPath: /etc/ais/certs
+          name: key-volume
+        - mountPath: /etc/config
+          name: config-volume
           readOnly: true
-          mountPath: /etc/config
-        imagePullPolicy: IfNotPresent
+        - name: tmp
+          mountPath: /tmp
       volumes:
       - name: key-volume
         secret:
           defaultMode: 420
           secretName: secret-key
-      - name: config-volume
-        configMap:
-          name: user-auth-config
+      - configMap:
           defaultMode: 420
+          name: user-auth-config
+        name: config-volume
+      - name: tmp
+        emptyDir: {}
 ---
 apiVersion: security.istio.io/v1beta1
 kind: PeerAuthentication
