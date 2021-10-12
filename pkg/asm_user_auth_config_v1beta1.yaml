@@ -69,6 +69,10 @@ spec:
                         description: The issuer in the idtoken issued by OIDC provider.
                           This will be used to validate the idtoken.
                         type: string
+                      proxy:
+                        description: 'Proxy server to use for the auth method, if applicable.
+                          For example: http://user:password@10.10.10.10:8888.'
+                        type: string
                       redirectURIHost:
                         description: The host to be used for OAuth termination URI. If not present
                           the host from the target URL will be used. This value can be utilized
@@ -85,7 +89,7 @@ spec:
                           be served from the same ingress as the application for a successful user auth
                           session. Note, this path will always terminate at user auth binary.
                         type: string
-                        default: "/_gcp_asm/authenticate"
+                        default: "/_gcp_asm_authenticate"
                     required:
                     - oauthCredentialsSecret
                     - issuerURI
