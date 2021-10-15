@@ -18,7 +18,8 @@ data:
           failure_mode_allow: false
           enable_plaintext_mode: true
       authentication_plugin:
-        enabled: all
+        enabled:
+        - all
       input_plugin:
         session_cookie:
           aes_symmetric_key:

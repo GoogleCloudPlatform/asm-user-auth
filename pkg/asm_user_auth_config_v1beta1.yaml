@@ -89,7 +89,7 @@ spec:
                           be served from the same ingress as the application for a successful user auth
                           session. Note, this path will always terminate at user auth binary.
                         type: string
-                        default: "/_gcp_asm/authenticate"
+                        default: "/_gcp_asm_authenticate"
                     required:
                     - oauthCredentialsSecret
                     - issuerURI
