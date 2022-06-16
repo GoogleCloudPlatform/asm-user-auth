@@ -29,6 +29,7 @@ data:
         status_property_name: "userAuthService"
       webflow:
         enabled: true
+        logout_destination_uri: "www.example.com/logout"
       login_and_session:
         state_session_encryption_key:
             filename: "/etc/ais/certs/session_cookie.key"
