@@ -41,7 +41,7 @@ spec:
         image: gcr.io/gke-release/ais:1.0.1  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.image"}
         imagePullPolicy: IfNotPresent
         command:
-        - /usr/bin/ais
+        - /usr/bin/ais_preview
         - --uid=
         - --gid=
         - --logtostderr
