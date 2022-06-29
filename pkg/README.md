@@ -58,7 +58,7 @@ Kpt v1.0 package for ASM User Auth.
         kpt fn eval pkg --image gcr.io/kpt-fn/apply-setters:v0.2 -- \
         client-id="ZmFrZS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbQ==" \
         client-secret="ZmFrZXNlY3JldA==" \
-        issuer-uri="https://issuer.dummy.com"
+        issuer-uri="https://issuer.sample.com"
         ```
 
     **IMPORTANT** Setters with no default values must be set before apply, e.g.

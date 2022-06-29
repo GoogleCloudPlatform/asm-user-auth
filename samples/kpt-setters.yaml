@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: kpt-setters
 data:
-  issuer-uri: "https://issuer.dummy.com"
+  issuer-uri: "https://issuer.sample.com"
   client-id: "ZmFrZS5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbQ=="
   client-secret: "ZmFrZXNlY3JldA=="
   image: "gcr.io/gke-release/ais:1.1.0"
