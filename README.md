@@ -4,6 +4,14 @@ This repository contains the ASM User Auth deployment for Anthos service mesh.
 
 ## Release Notes
 
+*   release-1.2
+
+    +   v1.2.0
+
+        -   Updated `user-auth-config` for new binary configuration.
+        -   Added `attributeMapping` field in UserAuthConfig for custom claims
+            mapping from the original IDToken.
+
 *   release-1.1
 
     +   v1.1.0

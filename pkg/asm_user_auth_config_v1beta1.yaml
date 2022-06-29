@@ -90,6 +90,13 @@ spec:
                           session. Note, this path will always terminate at user auth binary.
                         type: string
                         default: "/_gcp_asm_authenticate"
+                      attributeMapping:
+                        additionalProperties:
+                          type: string
+                        description: Optional Common Expression Language (CEL) for mapping user
+                          attributes (such as x, y, z) from the identity provider to the web
+                          application.
+                        type: object
                     required:
                     - oauthCredentialsSecret
                     - issuerURI
