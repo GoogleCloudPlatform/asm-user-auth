@@ -10,7 +10,7 @@ openAPI:
       x-k8s-cli:
         setter:
           name: anthos.servicemesh.user-auth.image
-          value: gcr.io/gke-release/ais:1.0.1
+          value: gcr.io/gke-release/ais_preview:1.2.0
     io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.clientID:
       description: The OAuth2 client ID for OIDC authentication.
       x-k8s-cli:
