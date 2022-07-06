@@ -18,12 +18,7 @@ data:
           failure_mode_allow: false
           enable_plaintext_mode: true
       authentication_plugin:
-        enabled:
-        - all
-      input_plugin:
-        session_cookie:
-          aes_symmetric_key:
-            filename: "/etc/ais/certs/session_cookie.key"
+        enabled: all
       custom_resource_definition_info:
         api_group: "security.anthos.io"
         version: "v1beta1"
@@ -34,3 +29,12 @@ data:
         status_property_name: "userAuthService"
       webflow:
         enabled: true
+      login_and_session:
+        state_session_encryption_key:
+            filename: "/etc/ais/certs/session_cookie.key"
+      sts_token:
+        sts_token_encryption_key:
+          filename: "/etc/ais/certs/session_cookie.key"
+      rc_token:
+        rc_token_signing_key:
+          filename: "/etc/ais/certs/rctoken.key"
