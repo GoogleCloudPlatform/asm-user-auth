@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
       - name: authservice
-        image: gcr.io/gke-release/ais:1.2.0  # kpt-set: ${image}
+        image: gcr.io/gke-release/ais_preview:1.2.0  # kpt-set: ${image}
         imagePullPolicy: IfNotPresent
         command:
         - /usr/bin/ais_preview
