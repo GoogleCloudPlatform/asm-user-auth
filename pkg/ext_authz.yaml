@@ -14,4 +14,3 @@ spec:
   - to:
     - operation:
         notPaths: ["/ip"]
----
