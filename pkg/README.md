@@ -34,6 +34,9 @@ Kpt v1.0 package for ASM User Auth.
     file.
 -   `proxy`: Optional HTTP proxy to IDP with format
     `http://user:password@1.2.3.4:8888`. Default: `""`.
+-   `attributeMapping`: Contains one or more claim mappings from `idtoken` followed
+    CEL expressions. All claims should be referenced by `assertion.X`, `assertion`
+    is referenced to the original IDToken, for example `aud_copy: assertion.aud`.
 
 ## Instruction
 
