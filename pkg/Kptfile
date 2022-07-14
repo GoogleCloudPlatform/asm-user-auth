@@ -2,67 +2,10 @@ apiVersion: kpt.dev/v1alpha1
 kind: Kptfile
 metadata:
   name: pkg
-packageMetadata:
-  shortDescription: Kpt package for anthos service mesh user auth.
-openAPI:
-  definitions:
-    io.k8s.cli.setters.anthos.servicemesh.user-auth.image:
-      x-k8s-cli:
-        setter:
-          name: anthos.servicemesh.user-auth.image
-          value: gcr.io/gke-release/ais_preview:1.2.0
-    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.clientID:
-      description: The OAuth2 client ID for OIDC authentication.
-      x-k8s-cli:
-        setter:
-          name: anthos.servicemesh.user-auth.oidc.clientID
-          value: your-oidc-client-id
-    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.clientSecret:
-      description: The OAuth2 client secret for OIDC authentication.
-      x-k8s-cli:
-        setter:
-          name: anthos.servicemesh.user-auth.oidc.clientSecret
-          value: your-oidc-clientSecret
-    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.name:
-      description: Name of the Kubernetes secret contains OAuth2 client credential for OIDC authentication.
-      x-k8s-cli:
-        setter:
-          name: anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.name
-          value: oauth-secret
-    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.namespace:
-      description: Namespace of the Kubernetes secret contains OAuth2 client credential for OIDC authentication.
-      x-k8s-cli:
-        setter:
-          name: anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.namespace
-          value: asm-user-auth
-    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.issuerURI:
-      description: The OIDC identity provider issuer URI.
-      x-k8s-cli:
-        setter:
-          name: anthos.servicemesh.user-auth.oidc.issuerURI
-          value: your-oidc-issuer-uri
-    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIHost:
-      description: The redirect URI host name for OIDC.
-      x-k8s-cli:
-        setter:
-          name: anthos.servicemesh.user-auth.oidc.redirectURIHost
-          value: your-oidc-redirect-uri-host
-          isSet: true
-    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIPath:
-      description: The redirect URI path for OIDC.
-      x-k8s-cli:
-        setter:
-          name: anthos.servicemesh.user-auth.oidc.redirectURIPath
-          value: "/_gcp_asm_authenticate"
-    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.certificateAuthorityData:
-      description: Base64 encoded pem format CA root cert for IDP.
-      x-k8s-cli:
-        setter:
-          name: anthos.servicemesh.user-auth.oidc.certificateAuthorityData
-          value: ""
-    io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.proxy:
-      description: Optional proxy for the IDP.
-      x-k8s-cli:
-        setter:
-          name: anthos.servicemesh.user-auth.oidc.proxy
-          value: ""
+info:
+  description: Kpt package for anthos service mesh user auth.
+pipeline:
+  mutators:
+    - image: gcr.io/kpt-fn/apply-setters:v0.1
+      configMap:
+        image: gcr.io/gke-release/ais_preview:1.2.0

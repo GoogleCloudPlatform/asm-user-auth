@@ -6,12 +6,14 @@ metadata:
 spec:
   authentication:
     oidc:
-      certificateAuthorityData: ""  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.certificateAuthorityData"}
+      certificateAuthorityData: ""  # kpt-set: ${ca-cert}
+      issuerURI: "<your issuer uri>"  # kpt-set: ${issuer-uri}
+      proxy: ""  # kpt-set: ${proxy}
       oauthCredentialsSecret:
-        name: "oauth-secret"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.name"}
-        namespace: "asm-user-auth"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.namespace"}
-      issuerURI: "<your issuer uri>"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.issuerURI"}
-      proxy: ""  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.proxy"}
-      redirectURIHost: ""  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIHost"}
-      redirectURIPath: "/_gcp_asm_authenticate"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.redirectURIPath"}
-  outputJWTAudience: "test_audience"
+        name: "oauth-secret"  # kpt-set: ${secret-name}
+        namespace: "asm-user-auth"  # kpt-set: ${secret-namespace}
+      redirectURIHost: ""  # kpt-set: ${redirect-host}
+      redirectURIPath: "/_gcp_asm_authenticate"  # kpt-set: ${redirect-path}
+      scopes: ""  # kpt-set: ${scopes}
+      groupsClaim: ""  # kpt-set: ${groups}
+  outputJWTAudience: "test_audience"  # kpt-set: ${jwt-audience}

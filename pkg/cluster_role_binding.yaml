@@ -3,17 +3,17 @@ kind: ClusterRole
 metadata:
   name: userauthconfig-operator
 rules:
-- apiGroups:
-  - security.anthos.io
-  resources:
+- resources:
   - userauthconfigs
   - userauthconfigs/status
+  apiGroups:
+  - security.anthos.io
   verbs: ["get", "update", "patch"]
-- apiGroups: [""]
-  resources:
+- resources:
   - secrets
+  apiGroups: [""]
   resourceNames:
-  - "oauth-secret"  # {"$ref":"#/definitions/io.k8s.cli.setters.anthos.servicemesh.user-auth.oidc.oauthCredentialsSecret.name"}
+  - "oauth-secret"  # kpt-set: ${secret-name}
   verbs: ["get"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
@@ -25,6 +25,6 @@ roleRef:
   kind: ClusterRole
   name: userauthconfig-operator
 subjects:
-- kind: ServiceAccount
-  name: default
+- name: default
   namespace: asm-user-auth
+  kind: ServiceAccount
