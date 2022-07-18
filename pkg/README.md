@@ -11,7 +11,7 @@ Kpt v1.0 package for ASM User Auth.
 -   `client-secret`: ClientSecret configured in OAuth2 IDP, must be base64
     encoded.
 -   `image`: The UserAuth image. Default:
-    `gcr.io/gke-release/ais:1.1.0`.
+    `gcr.io/gke-release/ais_preview:1.2.0`.
 -   `secret-name`: The K8s secret UserAuth reads from. Default:
     `"oauth-secret"`.
 -   `secret-namespace`: The namespace of the secret above. Default:
