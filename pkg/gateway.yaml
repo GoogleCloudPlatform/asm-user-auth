@@ -18,27 +18,3 @@ spec:
     tls:
       credentialName: userauth-tls-cert
       mode: SIMPLE
----
-# This ensure the OIDC endpiont has at least some route defined.
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-metadata:
-  name: userauth-oidc
-  namespace: asm-user-auth
-spec:
-  gateways:
-  - userauth
-  hosts:  # kpt-set ${hosts}
-  - '*'
-  http:
-  - name: user-auth-route
-    match:
-    - uri:
-        prefix: /status
-    - uri:
-        prefix: "/_gcp_asm_authenticate"  # kpt-set: ${redirect-path}
-    route:
-    - destination:
-        port:
-          number: 10004
-        host: authservice
