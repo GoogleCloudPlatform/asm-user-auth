@@ -6,6 +6,21 @@ This repository contains the ASM User Auth deployment for Anthos service mesh.
 
 *   release-1.2
 
+    +   v1.2.3
+
+        - Upgraded the internal HTTP client library and improved DNS compatibility when making outgoing HTTP requests.
+
+    +   v1.2.2
+
+        -   Upgraded the internal HTTP client library.
+            -   This fixes a known issue that could cause User Auth to freeze in very rare network situations.
+        -   Made various internal improvements.
+
+    +   v1.2.1
+
+        -   Improved session cookie security.
+        -   Enabled extended logging.
+
     +   v1.2.0
 
         -   Updated `user-auth-config` for new binary configuration.
