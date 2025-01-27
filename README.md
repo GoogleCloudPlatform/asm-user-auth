@@ -5,6 +5,11 @@ This repository contains the ASM User Auth deployment for Anthos service mesh.
 ## Release Notes
 
 *   release-1.2
+   
+    + v1.2.4
+
+        - Improved XSRF cookie handling. The XSRF cookie is now proactively deleted after a successful authentication.
+        - Improved Logs and messages based on XSRF cookie handling.
 
     +   v1.2.3
 
