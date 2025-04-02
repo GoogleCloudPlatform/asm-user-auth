@@ -5,6 +5,10 @@ This repository contains the ASM User Auth deployment for Anthos service mesh.
 ## Release Notes
 
 *   release-1.2
+
+    + v1.2.5
+
+        - Added support for API request identifiers, a set of Common Expression Language (CEL) expressions used by Cloud Service Mesh user authentication to    identify API requests.
    
     + v1.2.4
 
