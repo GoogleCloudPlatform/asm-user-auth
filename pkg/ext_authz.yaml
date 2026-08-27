@@ -14,3 +14,26 @@ spec:
   - to:
     - operation:
         notPaths: ["/ip"]
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: ext-authz-authservice
+  namespace: asm-user-auth
+spec:
+  selector:
+    matchLabels:
+      app: authservice
+  action: CUSTOM
+  provider:
+    name: asm-userauth-grpc
+  rules:
+  - to:
+    - operation:
+        paths:
+        - "/_gcp_user_auth/jwks"
+        - "/metricz"
+        - "/healthz"
+        - "/heapz"
+        - "/mallocz"
+        - "/peakheapz"
